@@ -1,35 +1,41 @@
-import React from 'react'
-import { Button } from '../Button/Button'
-import { Input } from '../Input/Input'
+import React from 'react';
+import { useState } from 'react';
+import { Button } from '../Button/Button';
+import { Input } from '../Input/Input';
 // import { Title } from '../Title/Title'
 // import { ChildForm } from '../ChildForm/ChildForm'
 // import { ChildrenList } from '../ChildrenList/ChildrenList'
-import { ChildForm } from '../ChildForm/ChildForm'
+import { ChildForm } from '../ChildForm/ChildForm';
+import { ChildrenItem } from '../ChildrenItem/ChildrenItem';
 
 export const ParentForm = () => {
-    return (
-        <div>
-            {/* <Title title={'Персональные данные'}/> */}
-        <form>
-            {/* <label>
-                Имя
-                <input>
-                </input>
-            </label>
-            <label>
-                Возраст
-                <input>
-                </input>
-            </label> */}
-                <Input label={ 'Имя'}/>
-                <Input label={ 'Возраст'}/>
-                <Button type={'button'} text={'+'}></Button>
-                <ChildForm/>
-                {/* <Title title={'Дети (макс. 5)'} />
-                <ChildrenList/> */}
-                {/* <ChildForm/> */}
-                <Button type={'submit'} text={'Сохранить'}></Button>
-            </form>
-            </div>
-    )
-}
+    const [childForm, setChildForm] = useState(false);
+    const [closedBtn, setClosedBtn] = useState(false)
+
+  const onBtnAddClick = e => {
+      setChildForm(true);
+      setClosedBtn(true)
+    };
+
+    const onBtnSaveClick = e => {
+        setChildForm(false)
+        setClosedBtn(false)
+    }
+
+  return (
+    <form>
+      <Input label={'Имя'}></Input>
+          <Input label={'Возраст'}></Input>
+          {!closedBtn &&
+          <Button type={'button'} text={'+'} onClickBtn={onBtnAddClick}></Button>
+
+          }
+          {/* <Button type={'button'} text={'+ Добавить ребенка'} onClickBtn={onBtnAddClick}></Button> */}
+          {childForm && <ChildForm />}
+          <ChildrenItem>
+
+          </ChildrenItem>
+      <Button type={'submit'} text={'Сохранить'} onClickBtn={onBtnSaveClick}></Button>
+    </form>
+  );
+};
