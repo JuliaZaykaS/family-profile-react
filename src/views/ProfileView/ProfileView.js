@@ -12,8 +12,13 @@ export const ProfileView = ({parent, childrens}) => {
         <div>
 
             <Title title={'Персональные данные'} />
+            {parent.nameOfParent &&
             <PersonInfo name={parent.nameOfParent} age={parent.ageOfParent}/>
+
+            }
             <Title title={'Дети (макс. 5)'} />
+            {childrens &&
+
             <ChildrenList>
                 {
                     childrens.map((el, index) => {
@@ -28,6 +33,7 @@ export const ProfileView = ({parent, childrens}) => {
 
                 }
             </ChildrenList>
+            }
 
 
             {/* <ParentForm /> */}
