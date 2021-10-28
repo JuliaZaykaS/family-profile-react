@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ProfileView } from '../../views/ProfileView/ProfileView';
 import { FormsView } from '../../views/FormsView/FormsView';
 import { Navigation } from '../Navigation/Navigation';
+import { Footer } from '../Footer/Footer';
 
 export const App = () => {
   const [parent, setParent] = useState({ nameOfParent: '', ageOfParent: '' });
@@ -34,6 +35,7 @@ export const App = () => {
       {viewForm && <FormsView onSubmit={getFamilyInfo} />}
 
       {viewPreview && <ProfileView parent={parent} childrens={childrens} />}
+      <Footer/>
     </React.Fragment>
   );
 };

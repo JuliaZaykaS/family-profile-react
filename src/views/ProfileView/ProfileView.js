@@ -1,5 +1,5 @@
 import React from 'react';
-import { Footer } from '../../components/Footer/Footer';
+import { Section } from '../../components/Section/Section';
 import { Title } from '../../components/Title/Title';
 import { ChildrenList } from '../../components/ChildrenList/ChildrenList';
 import { ChildrenItem } from '../../components/ChildrenItem/ChildrenItem';
@@ -7,7 +7,7 @@ import { PersonInfo } from '../../components/PersonInfo/PersonInfo';
 
 export const ProfileView = ({ parent, childrens }) => {
   return (
-    <div>
+    <Section>
       <Title title={'Персональные данные'} />
       {parent.nameOfParent && (
         <PersonInfo name={parent.nameOfParent} age={parent.ageOfParent} />
@@ -24,8 +24,6 @@ export const ProfileView = ({ parent, childrens }) => {
           })}
         </ChildrenList>
       )}
-
-      <Footer />
-    </div>
+    </Section>
   );
 };

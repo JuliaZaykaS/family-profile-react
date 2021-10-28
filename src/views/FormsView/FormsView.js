@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import { Form } from '../../components/Form/Form';
+import { Section } from '../../components/Section/Section';
 
 export const FormsView = ({ onSubmit }) => {
   const inputNames = [
@@ -108,7 +109,7 @@ export const FormsView = ({ onSubmit }) => {
   }
 
   return (
-    <div>
+    <Section>
       <Form
         onSubmitForm={onSubmitForm}
         childrens={childrens}
@@ -118,6 +119,6 @@ export const FormsView = ({ onSubmit }) => {
         childForm={childForm}
         onBtnRemoveClick={onBtnRemoveClick}
       />
-    </div>
+    </Section>
   );
 };

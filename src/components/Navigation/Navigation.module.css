@@ -1,0 +1,26 @@
+.Navigation {
+  box-shadow: 0px 1px 0px rgba(17, 17, 17, 0.1);
+  padding-top: 28px;
+  padding-bottom: 24px;
+}
+
+.NavigationList {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.NavigationItem:first-child {
+  margin-right: 24px;
+}
+
+.NavigationBtn {
+  border: none;
+  background-color: #ffffff;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+  color: rgba(17, 17, 17, 0.48);
+}
