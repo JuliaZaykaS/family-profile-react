@@ -6,7 +6,7 @@ import React from 'react'
 // export const ChildrenList = ({children, childrenList}) => {
 export const ChildrenList = ({children}) => {
     return (
-      <ul>
+      <ol>
         {/* {childrenList.map(() => { */}
           {children}
         {/* // }) */}
@@ -17,6 +17,6 @@ export const ChildrenList = ({children}) => {
             <Input label={'Возраст'} />
             <Button type={'button'} text={ 'Удалить'}/>
           </ChildrenItem> */}
-        </ul>
+        </ol>
     )
 }
