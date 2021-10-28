@@ -7,17 +7,26 @@ import { ChildrenList } from '../../components/ChildrenList/ChildrenList'
 import { ChildrenItem } from '../../components/ChildrenItem/ChildrenItem'
 import { PersonInfo } from '../../components/PersonInfo/PersonInfo'
 
-export const ProfileView = () => {
+export const ProfileView = ({parent, childrens}) => {
     return (
         <div>
 
             <Title title={'Персональные данные'} />
-            <PersonInfo name={'Василий'} age={'30 лет' }/>
+            <PersonInfo name={parent.nameOfParent} age={parent.ageOfParent}/>
             <Title title={'Дети (макс. 5)'} />
             <ChildrenList>
-                <ChildrenItem>
-                    <PersonInfo name={'Василий'} age={'14 лет' }/>
+                {
+                    childrens.map((el, index) => {
+                        return (
+
+                <ChildrenItem key={index}>
+                    <PersonInfo name={el.valueName} age={el.valueAge }/>
                 </ChildrenItem>
+                        )
+
+                    })
+
+                }
             </ChildrenList>
 
 

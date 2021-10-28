@@ -9,9 +9,9 @@ export const ChildrenList = ({children}) => {
       <ul>
         {/* {childrenList.map(() => { */}
           {children}
-        // })
+        {/* // }) */}
 
-        }
+        {/* } */}
           {/* <ChildrenItem>
             <Input label={ 'Имя'}/>
             <Input label={'Возраст'} />

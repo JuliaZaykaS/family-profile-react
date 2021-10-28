@@ -1,9 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Title } from '../Title/Title';
 import { Button } from '../Button/Button';
 
-export const TestForm = () => {
+export const TestForm = ({onSubmit}) => {
   const inputNames = [
     { name: 'nameOfChild1', age: 'ageOfChild1', valueName: '', valueAge: '' },
     { name: 'nameOfChild2', age: 'ageOfChild2', valueName: '', valueAge: '' },
@@ -37,16 +37,16 @@ export const TestForm = () => {
   // )
   // const [family, setFamily] = useState([])
   const [parent, setParent] = useState({ nameOfParent: '', ageOfParent: '' });
-  const [child1, setChild1] = useState(inputNames[0]);
-  console.log(child1);
-  // console.log(parent);
-  const [child2, setChild2] = useState(inputNames[1]);
-  const [child3, setChild3] = useState(inputNames[2]);
-  const [child4, setChild4] = useState(inputNames[3]);
-  const [child5, setChild5] = useState(inputNames[4]);
+  // const [child1, setChild1] = useState(inputNames[0]);
+  // console.log(child1);
+  // // console.log(parent);
+  // const [child2, setChild2] = useState(inputNames[1]);
+  // const [child3, setChild3] = useState(inputNames[2]);
+  // const [child4, setChild4] = useState(inputNames[3]);
+  // const [child5, setChild5] = useState(inputNames[4]);
   const [childrens, setChildrens] = useState([])
   // const [childrens, setChildrens] = useState([inputNames[0]])
-  console.log(childrens);
+  // console.log(childrens);
   // const [parent, setParent] = useState({ nameOfParent: '', ageOfParent: '' });
   // const [child1, setChild1] = useState({ nameOfChild1: '', ageOfChild1: '' });
   // // console.log(parent);
@@ -56,10 +56,10 @@ export const TestForm = () => {
   // const [child5, setChild5] = useState({ nameOfChild5: '', ageOfChild5: '' });
   // const [family, setFamily] = useState([parent])
   // const [family, setFamily] = useState([]);
-  useEffect(() => {
+  // useEffect(() => {
 
-  // }, [inputNames])
-  }, [childrens])
+  // // }, [inputNames])
+  // }, [childrens])
   // const [childrens, setChildrens] = useState([]);
   // console.log(family);
   // const names = [name1, name2, name3]
@@ -74,8 +74,11 @@ export const TestForm = () => {
   //   const [age, setAge] = useState([]);
   // const [person, setPerson] = useState({})
 
-  const onSubmit = e => {
+  const onSubmitForm = e => {
     e.preventDefault();
+    onSubmit(parent, childrens)
+    setParent({ nameOfParent: '', ageOfParent: '' })
+    setChildrens([])
     // console.log(parent);
     // console.log(child1);
     // console.log(person)
@@ -124,12 +127,12 @@ export const TestForm = () => {
         // console.log(childrens[0]);
         // const obj = {...childrens[0], valueName: value}
         // return setChild1({ ...child1, valueName: value,});
-        setChild1({ ...child1, valueName: value, });
+        // setChild1({ ...child1, valueName: value, });
         // console.log(child1);
         // console.log(childrens);
         // console.log(childrens[0].valueName);
-        // return setChildrens(prev => [{...prev[0], valueName: value }])
-        return setChildrens(prev => [...prev, ...{...child1 }])
+        return setChildrens(prev => [{...prev[0], valueName: value }])
+        // return setChildrens(prev => [...prev, ...{...child1 }])
         // return setChildrens(childrens[0]={...childrens[0],valueName: value});
         // return setChildrens([...childrens, ...obj]);
       case 'ageOfChild1':
@@ -138,31 +141,80 @@ export const TestForm = () => {
 
       case 'nameOfChild2':
         // return setChild2({ ...child2, valueName: value });
-        return setChildrens(prev => [{...prev[1], valueName: value }] )
+        return setChildrens(prev => {
+          // console.log(prev);
+          // console.log(prev[1]);
+          prev[1] = {...prev[1], valueName: value }
+          return [...prev, ...prev[1]]
+          // return [...prev, ...{...prev[1], valueName: value }]
+        })
       case 'ageOfChild2':
         // return setChild2({ ...child2, valueAge: value });
-        return setChildrens(prev => [{...prev[1], valueAge: value }] )
+        // return setChildrens(prev => [{...prev[1], valueAge: value }] )
+        // return setChildrens(prev => { return [...prev, ...{ ...prev[1], valueAge: value }] })
+
+        return setChildrens(prev => {
+          prev[1] = { ...prev[1], valueAge: value }
+          return [...prev, ...prev[1]]
+        })
 
       case 'nameOfChild3':
         // return setChild3({ ...child3, valueName: value });
-        return setChildrens(prev => [{...prev[2], valueName: value }] )
+        // return setChildrens(prev => [{...prev[2], valueName: value }] )
+        // return setChildrens(prev => [...prev, ...{...prev[2], valueName: value }] )
+        return setChildrens(prev => {
+          prev[2]={ ...prev[2], valueName: value }
+          return [...prev, ...prev[2]]
+        })
       case 'ageOfChild3':
         // return setChild3({ ...child3, valueAge: value });
-        return setChildrens(prev => [{...prev[2], valueAge: value }] )
+        // return setChildrens(prev => [{...prev[2], valueAge: value }] )
+        // return setChildrens(prev => [...prev, ...{...prev[2], valueAge: value }] )
+        return setChildrens(prev =>
+        {
+          prev[2] = { ...prev[2], valueAge: value }
+          return [...prev, ...prev[2]]
+          })
 
       case 'nameOfChild4':
         // return setChild4({ ...child4, valueName: value });
-        return setChildrens(prev => [{...prev[3], valueName: value }] )
+        // return setChildrens(prev => [{...prev[3], valueName: value }] )
+        // return setChildrens(prev => [...prev, ...{...prev[3], valueName: value }] )
+        return setChildrens(prev =>
+        {
+          prev[3]={ ...prev[3], valueName: value }
+          return [...prev, ...prev[3]]
+          }
+        )
       case 'ageOfChild4':
         // return setChild4({ ...child4, valueAge: value });
-        return setChildrens(prev => [{...prev[3], valueAge: value }] )
+        // return setChildrens(prev => [{...prev[3], valueAge: value }] )
+        // return setChildrens(prev => [...prev, ...{...prev[3], valueAge: value }] )
+        return setChildrens(prev =>
+        {
+          prev[3] = { ...prev[3], valueAge: value }
+          return [...prev, ...prev[3]]
+          }
+        )
 
       case 'nameOfChild5':
         // return setChild5({ ...child5, valueName: value });
-        return setChildrens(prev => [{...prev[4], valueName: value }] )
+        // return setChildrens(prev => [{...prev[4], valueName: value }] )
+        // return setChildrens(prev => [...prev, ...{...prev[4], valueName: value }] )
+        return setChildrens(prev =>
+        {
+          prev[4]={ ...prev[4], valueName: value }
+        return  [...prev, ...prev[4]]
+          }
+        )
       case 'ageOfChild5':
         // return setChild5({ ...child5, valueAge: value });
-        return setChildrens(prev => [{...prev[4], valueAge: value }] )
+        // return setChildrens(prev => [{...prev[4], valueAge: value }] )
+        // return setChildrens(prev => [...prev, ...{...prev[4], valueAge: value }] )
+        return setChildrens(prev => {
+          prev[4] = { ...prev[4], valueAge: value }
+          return [...prev, ...prev[4]]
+        })
 
       default: break
     }
@@ -248,13 +300,16 @@ export const TestForm = () => {
 
   const onBtnAddClick = e => {
     setChildForm(true);
-    console.log(childrens);
+    // console.log(childrens);
     if (childrens.length > 4) {
       setDisabled(true)
       return
     }
     // setFamily(family.push(child1))
-    setChildrens(prev => [...prev, inputNames[count]]);
+    setChildrens(prev => {
+      // console.log(prev);
+      return [...prev, inputNames[count]]
+    })
 
     // setFamily(family.push(parent, child1))
     setCount(count + 1)
@@ -268,7 +323,7 @@ export const TestForm = () => {
   return (
     <div>
       <Title title={'Персональные данные'} />
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmitForm}>
         <label>
           Имя
           <input
