@@ -1,9 +1,5 @@
-import s from './Section.module.css'
+import s from './Section.module.css';
 
-export const Section = ({children}) => {
-    return (
-        <section className={s.Section}>
-            {children}
-        </section>
-    )
-}
+export const Section = ({ children }) => {
+  return <section className={s.Section}>{children}</section>;
+};

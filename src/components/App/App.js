@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import { ProfileView } from '../../views/ProfileView/ProfileView';
 import { FormsView } from '../../views/FormsView/FormsView';
@@ -27,7 +26,7 @@ export const App = () => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Navigation
         onBtnFormClick={onBtnFormClick}
         onBtnPreviewClick={onBtnPreviewClick}
@@ -35,7 +34,7 @@ export const App = () => {
       {viewForm && <FormsView onSubmit={getFamilyInfo} />}
 
       {viewPreview && <ProfileView parent={parent} childrens={childrens} />}
-      <Footer/>
-    </React.Fragment>
+      <Footer />
+    </>
   );
 };

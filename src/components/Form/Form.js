@@ -34,65 +34,53 @@ export const Form = ({
         />
       </div>
       <div>
-
-      {childrens.length !== 5 && (
-        <Button
-          className={s.Button}
-          type={'button'}
-          text={'+Добавить ребенка'}
-          onClickBtn={onBtnAddClick}
-        ></Button>
-      )}
-      {childForm && (
-        <>
-          <Title title={'Дети (макс. 5)'} />
-          <ChildrenList>
-            {childrens.map(el => {
-              return (
-                <ChildrenItem key={el.id}>
-                  {/* <div className={s.childFormInput}> */}
-                  <Input
-                    label={'Имя'}
-                    name={el.name}
-                    // name={el.id}
-                    // name={el.id}
-                    value={el.valueName}
-                    // value={el.name}
-                    // onChangeInput={()=>onChangeInput(el.id)}
-                    onChangeInput={onChangeInput}
-                    className={s.childInput}
+        {childrens.length !== 5 && (
+          <Button
+            className={s.Button}
+            type={'button'}
+            text={'+Добавить ребенка'}
+            onClickBtn={onBtnAddClick}
+          ></Button>
+        )}
+        {childForm && (
+          <>
+            <Title title={'Дети (макс. 5)'} />
+            <ChildrenList>
+              {childrens.map(el => {
+                return (
+                  <ChildrenItem key={el.id}>
+                    <Input
+                      label={'Имя'}
+                      name={el.name}
+                      value={el.valueName}
+                      onChangeInput={onChangeInput}
+                      className={s.childInput}
                     />
-
-                  {/* </div> */}
-                  {/* <div className={s.childFormInput}> */}
-
-                  <Input
-                    className={s.childInput}
-                    label={'Возраст'}
-                    // name={555}
-                    // name={el.id}
-                    name={el.age}
-                    // value={el.age}
-                    value={el.valueAge}
-                    onChangeInput={onChangeInput}
-                    // onChangeInput={()=>onChangeInput(el.id)}
-                  />
-                  {/* </div> */}
-                  <Button
-                    className={s.removeBtn}
-                    type={'button'}
-                    text={'Удалить'}
-                    onClickBtn={() => onBtnRemoveClick(el.id)}
-                  ></Button>
-                </ChildrenItem>
-              );
-            })}
-          </ChildrenList>
-          <Button className={s.saveBtn} type={'submit'} text={'Сохранить'}></Button>
-        </>
-      )}
+                    <Input
+                      className={s.childInput}
+                      label={'Возраст'}
+                      name={el.age}
+                      value={el.valueAge}
+                      onChangeInput={onChangeInput}
+                    />
+                    <Button
+                      className={s.removeBtn}
+                      type={'button'}
+                      text={'Удалить'}
+                      onClickBtn={() => onBtnRemoveClick(el.id)}
+                    ></Button>
+                  </ChildrenItem>
+                );
+              })}
+            </ChildrenList>
+            <Button
+              className={s.saveBtn}
+              type={'submit'}
+              text={'Сохранить'}
+            ></Button>
+          </>
+        )}
       </div>
-
     </form>
   );
 };

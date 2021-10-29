@@ -23,17 +23,6 @@
 .childInput {
   width: 260px;
   margin-right: 18px;
-  /* display: block; */
-}
-/* .childrens {
-  display: flex;
-  justify-content: space-between;
-} */
-
-.childFormInput {
-  /* position: relative; */
-  /* margin-right: 18px; */
-  /* height: 56px; */
 }
 
 .removeBtn {
