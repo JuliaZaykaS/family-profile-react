@@ -6,6 +6,8 @@ export const FormsView = ({ onSubmit }) => {
   const inputNames = [
     {
       id: 1,
+      // name: '',
+      // age: '',
       name: 'nameOfChild1',
       age: 'ageOfChild1',
       valueName: '',
@@ -13,6 +15,8 @@ export const FormsView = ({ onSubmit }) => {
     },
     {
       id: 2,
+      // name: '',
+      // age: '',
       name: 'nameOfChild2',
       age: 'ageOfChild2',
       valueName: '',
@@ -44,6 +48,7 @@ export const FormsView = ({ onSubmit }) => {
   const [childrens, setChildrens] = useState([]);
   const [childForm, setChildForm] = useState(false);
   const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(1);
 
   //
 
@@ -61,9 +66,10 @@ export const FormsView = ({ onSubmit }) => {
     foundChild = { ...foundChild, valueName: value };
     const findChildInx = childrens.findIndex(el => el.id === id);
     console.log('findChild', foundChild);
-    const a = childrens.splice(findChildInx, 1, foundChild);
-    console.log(a);
-    return a
+    // const a = childrens.splice(findChildInx, 1, foundChild);
+    childrens.splice(findChildInx, 1, foundChild);
+    // console.log(a);
+    return [...childrens];
     // return childrens.splice(findChildInx, 1, foundChild);
   };
   const updateOneChildAge = (childrens, value, id) => {
@@ -72,11 +78,13 @@ export const FormsView = ({ onSubmit }) => {
     const findChildInx = childrens.findIndex(el => el.id === id);
     console.log('findChild', foundChild);
     // return childrens.splice(findChildInx, 1, foundChild);
-    const a = childrens.splice(findChildInx, 1, foundChild);
+    childrens.splice(findChildInx, 1, foundChild);
+    return [...childrens];
+    // const a = childrens.splice(findChildInx, 1, foundChild);
     //нужен слайс!!!
 
-    console.log(a);
-    return a
+    // console.log(a);
+    // return a
   };
 
   const onSubmitForm = e => {
@@ -88,12 +96,18 @@ export const FormsView = ({ onSubmit }) => {
   };
 
   const onChangeInput = e => {
+    // const onChangeInput = (e, id) => {
+    // console.log(e.currentTarget);
     const { name, value } = e.currentTarget;
+    // console.log(name);
     console.log('childrens', childrens);
 
     if (name === 'nameOfParent' || name === 'ageOfParent') {
       return setParent({ ...parent, [name]: value });
     }
+    // if (name === String(id)) {
+    //   return setChildrens(prev => updateOneChildName(prev, value, id));
+    // }
 
     switch (name) {
       case 'nameOfChild1':
@@ -213,11 +227,54 @@ export const FormsView = ({ onSubmit }) => {
 
   const onBtnAddClick = e => {
     setChildForm(true);
+    if (count > 4) return;
+
     setChildrens(prev => {
-      return [...prev, inputNames[count]];
+      console.log(prev);
+      const sortedArray = prev.sort((el1, el2) => el1.id - el2.id);
+      console.log(sortedArray);
+      if (sortedArray.length === 0) {
+        //  setCount(count + 1);
+        return [...prev, inputNames[0]];
+      }
+      // else {
+        console.log(sortedArray[0].id);
+
+      for (let i = 0; i < sortedArray.length; i += 1) {
+        console.log(i);
+        console.log(sortedArray[i].id);
+        console.log(sortedArray[i + 1]?.id);
+        console.log(sortedArray[i].id + 1);
+          // if ((sortedArray[i].id + 1) !== sortedArray[i + 1].id)
+          if (sortedArray[i].id + 1 !== sortedArray[i + 1]?.id)
+            // return sortedArray[i] + 1;
+            // return [...prev, inputNames[i+1]];
+            return [...prev, inputNames[i+1]];
+        }
+      // }
+      setCount(count + 1);
+      // console.log(prev);
+      // if(prev.length === 0) return [...prev, inputNames[0]]
+      // for (let i = 1; i < inputNames.length; i += 1) {
+      //   const foundItem = prev.find(el => el.id === i);
+      //   // const foundItem = prev.some(el => el.id === i);
+      //   console.log(foundItem);
+      //   // if((i-1) <= 0) return [...prev, inputNames[0]]
+      //   // if (foundItem) return [...prev, inputNames[i + 1]];
+      //   if (foundItem) return [...prev, inputNames[i + 1]];
+      //   // return [...prev, inputNames[i-1]];
+      //   console.log(prev);
+      //   return [...prev, inputNames[i]];
+      // }
+      // if(!foundCount) return [...prev, inputNames[count]]
+      console.log(count);
+      // if(count > 4 ) return
+      // setCount(count + 1);
+      // return [...prev, inputNames[count+1]];
+      // return [...prev, inputNames[count]];
       // return [...prev, childs[count]];
     });
-    setCount(count + 1);
+    // setCount(count + 1);
   };
 
   const onBtnRemoveClick = id => {
@@ -226,6 +283,7 @@ export const FormsView = ({ onSubmit }) => {
       setChildForm(false);
     }
     setChildrens(filteredChildrens);
+    setCount(count - 1);
   };
 
   return (

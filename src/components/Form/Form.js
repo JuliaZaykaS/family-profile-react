@@ -54,7 +54,11 @@ export const Form = ({
                   <Input
                     label={'Имя'}
                     name={el.name}
+                    // name={el.id}
+                    // name={el.id}
                     value={el.valueName}
+                    // value={el.name}
+                    // onChangeInput={()=>onChangeInput(el.id)}
                     onChangeInput={onChangeInput}
                     className={s.childInput}
                     />
@@ -65,9 +69,13 @@ export const Form = ({
                   <Input
                     className={s.childInput}
                     label={'Возраст'}
+                    // name={555}
+                    // name={el.id}
                     name={el.age}
+                    // value={el.age}
                     value={el.valueAge}
                     onChangeInput={onChangeInput}
+                    // onChangeInput={()=>onChangeInput(el.id)}
                   />
                   {/* </div> */}
                   <Button
