@@ -233,7 +233,7 @@ export const FormsView = ({ onSubmit }) => {
       console.log(prev);
       const sortedArray = prev.sort((el1, el2) => el1.id - el2.id);
       console.log(sortedArray);
-      if (sortedArray.length === 0) {
+      if (sortedArray.length === 0 || sortedArray[0].id !== 1) {
         //  setCount(count + 1);
         return [...prev, inputNames[0]];
       }
@@ -241,10 +241,10 @@ export const FormsView = ({ onSubmit }) => {
         console.log(sortedArray[0].id);
 
       for (let i = 0; i < sortedArray.length; i += 1) {
-        console.log(i);
-        console.log(sortedArray[i].id);
-        console.log(sortedArray[i + 1]?.id);
-        console.log(sortedArray[i].id + 1);
+        // console.log(i);
+        // console.log(sortedArray[i].id);
+        // console.log(sortedArray[i + 1]?.id);
+        // console.log(sortedArray[i].id + 1);
           // if ((sortedArray[i].id + 1) !== sortedArray[i + 1].id)
           if (sortedArray[i].id + 1 !== sortedArray[i + 1]?.id)
             // return sortedArray[i] + 1;
