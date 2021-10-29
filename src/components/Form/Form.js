@@ -1,38 +1,90 @@
-import React from 'react';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
-import { Title } from '../Title/Title'
-import { ChildrenList } from '../ChildrenList/ChildrenList'
+import { Title } from '../Title/Title';
+import { ChildrenList } from '../ChildrenList/ChildrenList';
 import { ChildrenItem } from '../ChildrenItem/ChildrenItem';
+import s from './Form.module.css';
 
-export const Form = ({onSubmitForm, childrens, parent, onChangeInput, childForm, onBtnAddClick, onBtnRemoveClick}) => {
+export const Form = ({
+  onSubmitForm,
+  childrens,
+  parent,
+  onChangeInput,
+  childForm,
+  onBtnAddClick,
+  onBtnRemoveClick,
+}) => {
   return (
-    <form onSubmit={onSubmitForm}>
+    <form onSubmit={onSubmitForm} className={s.form}>
       <Title title={'Персональные данные'} />
-      <Input label={'Имя'} name={'nameOfParent' } value={parent.nameOfParent} onChangeInput={onChangeInput} />
-      <Input label={'Возраст'} name={'ageOfParent' } value={parent.ageOfParent} onChangeInput={onChangeInput} />
+      <div className={s.ParentInfo}>
+        <Input
+          className={s.parentInput}
+          label={'Имя'}
+          name={'nameOfParent'}
+          value={parent.nameOfParent}
+          onChangeInput={onChangeInput}
+        />
+        <Input
+          className={s.parentInput}
+          label={'Возраст'}
+          name={'ageOfParent'}
+          value={parent.ageOfParent}
+          onChangeInput={onChangeInput}
+        />
+      </div>
+      <div>
 
-      {childrens.length !== 5 &&
-        <Button type={'button'} text={'+Добавить ребенка'} onClickBtn={onBtnAddClick}></Button>
-      }
+      {childrens.length !== 5 && (
+        <Button
+          className={s.Button}
+          type={'button'}
+          text={'+Добавить ребенка'}
+          onClickBtn={onBtnAddClick}
+        ></Button>
+      )}
       {childForm && (
-        <React.Fragment>
-          <Title title={'Дети'} />
+        <>
+          <Title title={'Дети (макс. 5)'} />
           <ChildrenList>
-            {childrens.map((el) => {
+            {childrens.map(el => {
               return (
                 <ChildrenItem key={el.id}>
-                  <Input label={'Имя'} name={el.name} value={el.valueName} onChangeInput={onChangeInput} />
-                  <Input label={'Возраст'} name={el.age} value={el.valueAge} onChangeInput={onChangeInput} />
-                  <Button type={'button'} text={'Удалить'} onClickBtn={()=>onBtnRemoveClick(el.id)}></Button>
+                  {/* <div className={s.childFormInput}> */}
+                  <Input
+                    label={'Имя'}
+                    name={el.name}
+                    value={el.valueName}
+                    onChangeInput={onChangeInput}
+                    className={s.childInput}
+                    />
+
+                  {/* </div> */}
+                  {/* <div className={s.childFormInput}> */}
+
+                  <Input
+                    className={s.childInput}
+                    label={'Возраст'}
+                    name={el.age}
+                    value={el.valueAge}
+                    onChangeInput={onChangeInput}
+                  />
+                  {/* </div> */}
+                  <Button
+                    className={s.removeBtn}
+                    type={'button'}
+                    text={'Удалить'}
+                    onClickBtn={() => onBtnRemoveClick(el.id)}
+                  ></Button>
                 </ChildrenItem>
-              )
+              );
             })}
           </ChildrenList>
-          <Button type={'submit'} text={'Сохранить'}></Button>
-        </React.Fragment>
+          <Button className={s.saveBtn} type={'submit'} text={'Сохранить'}></Button>
+        </>
       )}
-      </form>
+      </div>
 
+    </form>
   );
 };

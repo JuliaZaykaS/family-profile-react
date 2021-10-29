@@ -1,5 +1,5 @@
-import React from 'react';
+import s from './ChildrenList.module.css'
 
 export const ChildrenList = ({ children }) => {
-  return <ol>{children}</ol>;
+  return <ol className={s.ChildrenList}>{children}</ol>;
 };

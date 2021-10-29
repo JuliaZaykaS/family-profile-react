@@ -1,4 +1,4 @@
-import React from 'react';
+import s from './ProfileView.module.css'
 import { Section } from '../../components/Section/Section';
 import { Title } from '../../components/Title/Title';
 import { ChildrenList } from '../../components/ChildrenList/ChildrenList';
@@ -12,13 +12,13 @@ export const ProfileView = ({ parent, childrens }) => {
       {parent.nameOfParent && (
         <PersonInfo name={parent.nameOfParent} age={parent.ageOfParent} />
       )}
-      <Title title={'Дети (макс. 5)'} />
+      <Title title={'Дети'} />
       {childrens && (
         <ChildrenList>
           {childrens.map((el, index) => {
             return (
-              <ChildrenItem key={index}>
-                <PersonInfo name={el.valueName} age={el.valueAge} />
+              <ChildrenItem key={index} >
+                <PersonInfo className={s.childInfo} name={el.valueName} age={el.valueAge} />
               </ChildrenItem>
             );
           })}

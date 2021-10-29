@@ -1,0 +1,52 @@
+.form {
+  width: 616px;
+}
+.ParentInfo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.Button {
+  font-size: 14px;
+  line-height: 1.71;
+  background-color: #ffffff;
+  color: #01a7fd;
+  display: block;
+  margin-left: auto;
+}
+.parentInput {
+  width: 616px;
+  margin-bottom: 10px;
+}
+
+.childInput {
+  width: 260px;
+  margin-right: 18px;
+  /* display: block; */
+}
+/* .childrens {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.childFormInput {
+  /* position: relative; */
+  /* margin-right: 18px; */
+  /* height: 56px; */
+}
+
+.removeBtn {
+  background-color: #ffffff;
+  color: #01a7fd;
+  border: none;
+  font-size: 14px;
+  line-height: 1.71;
+  padding: 0;
+}
+
+.saveBtn {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.71;
+}

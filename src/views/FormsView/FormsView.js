@@ -33,8 +33,16 @@ export const FormsView = ({ onSubmit }) => {
     switch (name) {
       case 'nameOfChild1':
         return setChildrens(prev => {
-          prev[0] = { ...prev[0], valueName: value }
-          return [...prev, ...prev[0]]
+          console.log(prev[0]);
+          // let child1 = prev[0]
+          let child1 = prev.find(el=>el.id ===1)
+          // prev[0] = { ...prev[0], valueName: value }
+          // const child1 = { ...prev[0], valueName: value }
+          // child1 = { ...prev[0], valueName: value }
+          child1 = { ...child1, valueName: value }
+          // return [...prev, ...prev[0]]
+          return [...prev, ...child1]
+          // return [...prev[0]]
         })
       case 'ageOfChild1':
         return setChildrens(prev => {
