@@ -2,6 +2,7 @@
   "name": "family-profile-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://juliazaykas.github.io/family-profile-react",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
